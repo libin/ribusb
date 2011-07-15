@@ -971,8 +971,8 @@ static VALUE cDevice_controlTransfer (VALUE self, VALUE hash)
 	rb_raise (rb_eRuntimeError, "Invalid parameters to RibUSB::Device#controlTransfer: :dataIn must not be a String when a block is passed.");
 	return Qnil;
       }
-      data = (unsigned char *) (RSTRING(dataIn)->ptr);
-      wLength = RSTRING(dataIn)->len;
+      data = (unsigned char *) (RSTRING_PTR(dataIn));
+      wLength = RSTRING_LEN(dataIn);
       foreign_data_in = 1;
       break;
     case T_FIXNUM:
@@ -992,8 +992,8 @@ static VALUE cDevice_controlTransfer (VALUE self, VALUE hash)
     }
   } else if ((NIL_P(dataIn)) && (!NIL_P(dataOut))) {
     bmRequestType &= 0x7f; /* out transfer */
-    data = (unsigned char *) (RSTRING(dataOut)->ptr);
-    wLength = RSTRING(dataOut)->len;
+    data = (unsigned char *) (RSTRING_PTR(dataOut));
+    wLength = RSTRING_LEN(dataOut);
   } else if ((NIL_P(dataIn)) && (NIL_P(dataOut))) {
     bmRequestType &= 0x7f; /* out transfer */
     data = NULL;
@@ -1112,8 +1112,8 @@ static VALUE cDevice_bulkTransfer (VALUE self, VALUE hash)
 	rb_raise (rb_eRuntimeError, "Invalid parameters to RibUSB::Device#bulkTransfer: :dataIn must not be a String when a block is passed.");
 	return Qnil;
       }
-      data = (unsigned char *) (RSTRING(dataIn)->ptr);
-      wLength = RSTRING(dataIn)->len;
+      data = (unsigned char *) (RSTRING_PTR(dataIn));
+      wLength = RSTRING_LEN(dataIn);
       foreign_data_in = 1;
       break;
     case T_FIXNUM:
@@ -1133,8 +1133,8 @@ static VALUE cDevice_bulkTransfer (VALUE self, VALUE hash)
     }
   } else if ((NIL_P(dataIn)) && (!NIL_P(dataOut))) {
     endpoint &= 0x7f; /* out transfer */
-    data = (unsigned char *) (RSTRING(dataOut)->ptr);
-    wLength = RSTRING(dataOut)->len;
+    data = (unsigned char *) (RSTRING_PTR(dataOut));
+    wLength = RSTRING_LEN(dataOut);
   } else
     rb_raise (rb_eRuntimeError, "Exactly one of :dataIn and :dataOut must be non-nil in RibUSB::Device#bulkTransfer.");
 
@@ -1248,8 +1248,8 @@ static VALUE cDevice_interruptTransfer (VALUE self, VALUE hash)
 	rb_raise (rb_eRuntimeError, "Invalid parameters to RibUSB::Device#interruptTransfer: :dataIn must not be a String when a block is passed.");
 	return Qnil;
       }
-      data = (unsigned char *) (RSTRING(dataIn)->ptr);
-      wLength = RSTRING(dataIn)->len;
+      data = (unsigned char *) (RSTRING_PTR(dataIn));
+      wLength = RSTRING_LEN(dataIn);
       foreign_data_in = 1;
       break;
     case T_FIXNUM:
@@ -1269,8 +1269,8 @@ static VALUE cDevice_interruptTransfer (VALUE self, VALUE hash)
     }
   } else if ((NIL_P(dataIn)) && (!NIL_P(dataOut))) {
     endpoint &= 0x7f; /* out transfer */
-    data = (unsigned char *) (RSTRING(dataOut)->ptr);
-    wLength = RSTRING(dataOut)->len;
+    data = (unsigned char *) (RSTRING_PTR(dataOut));
+    wLength = RSTRING_LEN(dataOut);
   } else
     rb_raise (rb_eRuntimeError, "Exactly one of :dataIn and :dataOut must be non-nil in RibUSB::Device#interruptTransfer.");
 

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.requirements << "libusb, version 1.0 or greater"
-  s.authors = ["András G. Major"]
+  s.authors = ["Andras G. Major"]
   s.date = %q{2009-06-23}
   s.description = %q{RibUSB is a Ruby extension that makes USB devices accessible from Ruby via the libusb library (API version >=1.0).}
   s.email = %q{andras.g.major@gmail.com}
